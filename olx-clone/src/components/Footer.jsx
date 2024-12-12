@@ -13,7 +13,7 @@ function Footer() {
                 <li>Mumbai</li>
                 <li>Chennai</li>
                 <li>Pune</li>
-              </ul>
+              </ul> 
             </div>
 
             <div>

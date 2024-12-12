@@ -24,8 +24,6 @@ function SignupComponent() {
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         toast.error("This email is already registered!");
-      } else if (error.code === "auth/weak-password") {
-        toast.error("Password should be at least 6 characters!");
       } else {
         toast.error("Error during sign-up. Please try again.");
         console.log(error);

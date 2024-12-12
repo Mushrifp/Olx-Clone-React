@@ -7,7 +7,7 @@ const ProductsContext = createContext();
 export const useProducts = () => useContext(ProductsContext);
 
 export function Products({ children }) {
-  const [products, setProducts] = useState([]); 
+  const [products, setProducts] = useState([]);
 
   const fetchProducts = async () => {
     try {
@@ -25,7 +25,7 @@ export function Products({ children }) {
 
   const addProduct = async (newProduct) => {
     try {
-      const productsCollection = collection(db, "users", "userUID", "products"); 
+      const productsCollection = collection(db, "users", "userUID", "products");
       const docRef = await addDoc(productsCollection, newProduct);
 
       setProducts((prevProducts) => [
@@ -47,4 +47,3 @@ export function Products({ children }) {
     </ProductsContext.Provider>
   );
 }
-

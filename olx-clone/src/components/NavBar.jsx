@@ -78,7 +78,7 @@ function NavBar() {
               <h1 className="font-bold text-lg">Login</h1>
             </div>
           </Link>
-        )}
+        )} 
 
         <div onClick={sellFunction} className="flex items-center justify-center w-28 h-12 ml-6 cursor-pointer rounded-full border">
           <img src={sell}  alt="Arrow Icon" className="w-72 h-12 " />

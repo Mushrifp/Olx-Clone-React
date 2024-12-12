@@ -19,7 +19,7 @@ function MenuBar() {
     <p className="whitespace-nowrap hover:text-cyan-600 cursor-pointer">For Rent: Houses & Apartments</p>
   </div>
 </div>
-
+ 
   )
 }
 

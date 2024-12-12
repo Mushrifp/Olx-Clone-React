@@ -1,8 +1,8 @@
 import React from "react";
-import { useProducts } from "../context/products"; // Use ProductsContext
+import { useProducts } from "../context/products";
 
 function Recommendations() {
-  const { products } = useProducts(); // Get the list of products from the context
+  const { products } = useProducts(); 
 
   return (
     <>
@@ -17,14 +17,14 @@ function Recommendations() {
               key={product.id}
               className="w-60 min-w-0 rounded overflow-hidden shadow-lg bg-white mt-4 border"
             >
-              {/* Product Image */}
+
               <img
                 className="w-full h-48 object-cover"
-                src={product.imageUrl} // Image URL from the product
+                src={product.imageUrl} 
                 alt={product.productName}
               />
 
-              {/* Product Details */}
+
               <div className="px-6 py-4">
                 <p className="text-xl font-medium text-gray-800">
                   ₹ {product.price}

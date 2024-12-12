@@ -125,5 +125,5 @@ function SellComponent() {
     </div>
   );
 }
-
+ 
 export default SellComponent;
