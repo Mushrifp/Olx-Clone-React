@@ -14,22 +14,40 @@ function SignupComponent() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
+  
+    if (!email || !password || !username || !number) {
+      toast.error("Please fill out all the fields.");
+      return;
+    }
+  
+    const validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!validEmail.test(email)) {
+      toast.error("Enter a valid email address");
+      return;
+    }
+  
+    if (password.trim().length === 0) {
+      toast.error("Enter a password");
+      return;
+    } else if (password.length < 6) {
+      toast.error("Password should be at least 6 characters");
+      return;
+    }
+  
     try {
-      await signIn(email, password, username, number);  
-
+      await signIn(email, password, username, number);
       toast.success("Sign-up successful!");
       navigate("/");
-
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         toast.error("This email is already registered!");
       } else {
-        toast.error("Error during sign-up. Please try again.");
-        console.log(error);
+        toast.error("Invalid sign-up. Please try again.");
+        console.error(error);  
       }
     }
   };
+  
 
   useEffect(() => {
     if (user) {
@@ -49,13 +67,12 @@ function SignupComponent() {
 
         <div className="mb-6">
           <input
-            type="email"
+            type="string"
             name="email"
             className="shadow-sm border border-black text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 bg-white"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
         </div>
 
@@ -67,7 +84,6 @@ function SignupComponent() {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
         </div>
 
@@ -79,7 +95,6 @@ function SignupComponent() {
             placeholder="Enter your username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
           />
         </div>
 
@@ -91,7 +106,6 @@ function SignupComponent() {
             placeholder="Enter your Number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            required
           />
         </div>
 

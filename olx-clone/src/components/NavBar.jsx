@@ -32,7 +32,6 @@ function NavBar() {
     }
   }
 
-  console.log(userDetails);
 
   return (
     <>
@@ -80,7 +79,7 @@ function NavBar() {
           </Link>
         )} 
 
-        <div onClick={sellFunction} className="flex items-center justify-center w-28 h-12 ml-6 cursor-pointer rounded-full border">
+        <div onClick={sellFunction} className="flex items-center justify-center  w-28 h-12 ml-6 cursor-pointer rounded-full border">
           <img src={sell}  alt="Arrow Icon" className="w-72 h-12 " />
         </div>
       </div>

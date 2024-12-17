@@ -13,6 +13,22 @@ function LoginComponent() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    if(email.trim().length == 0){
+      toast.error("Enter a mail")
+      return
+    }
+
+    const validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(!validEmail.test(email)){
+      toast.error("Enter valid Mail")
+      return
+    }
+
+    if(password.trim().length == 0){
+      toast.error("Enter a password")
+      return
+    }
  
     try {
       await logIn(email, password);
@@ -42,13 +58,13 @@ function LoginComponent() {
 
         <div className="mb-6">
           <input
-            type="email"
+            type="string"
             name="email"
             className="shadow-sm border border-black text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 bg-white"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            
           />
         </div>
 
@@ -60,7 +76,7 @@ function LoginComponent() {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            
           />
         </div>
 

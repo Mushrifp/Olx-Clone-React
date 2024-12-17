@@ -1,8 +1,15 @@
 import React from 'react'
+import ViewComponent from '../components/ViewComponent'
+import Footer from '../components/Footer'
+
 
 function ViewProduct() {
+
   return (
-    <div>ViewProduct</div>
+    <> 
+       <ViewComponent/>
+       <Footer/>
+     </>
   )
 }
 

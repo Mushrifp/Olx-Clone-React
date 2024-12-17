@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { useProducts } from "../context/products";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useAuth } from "../context/context";
+
 
 function SellComponent() {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
+  const { user } = useAuth();
 
   const { addProduct } = useProducts();
 
@@ -41,7 +44,14 @@ function SellComponent() {
 
       const imageUrl = response.data.secure_url;
 
-      await addProduct({ productName, price, imageUrl });
+      const obj = {
+        productName,
+        price,
+        imageUrl,
+       useRId:user.uid
+      }
+
+      await addProduct(obj);
 
       toast.success("Product successfully added!");
       setProductName("");

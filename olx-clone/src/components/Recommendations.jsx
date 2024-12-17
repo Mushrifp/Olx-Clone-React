@@ -1,5 +1,6 @@
 import React from "react";
 import { useProducts } from "../context/products";
+import { Link } from "react-router-dom";
 
 function Recommendations() {
   const { products } = useProducts(); 
@@ -13,9 +14,10 @@ function Recommendations() {
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-20">
         {products.length > 0 ? (
           products.map((product) => (
-            <div
-              key={product.id}
-              className="w-60 min-w-0 rounded overflow-hidden shadow-lg bg-white mt-4 border"
+           <Link to={`/view/${product.id}`} key={product.id}>
+           
+           <div
+              className="w-60 min-w-0 rounded overflow-hidden  bg-white mt-4 border"
             >
 
               <img
@@ -34,6 +36,12 @@ function Recommendations() {
                 </p>
               </div>
             </div>
+           
+           
+           
+           
+           
+           </Link>
           ))
         ) : (
           <p className="text-gray-500 text-center col-span-full">

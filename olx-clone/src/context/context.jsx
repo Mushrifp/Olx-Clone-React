@@ -35,25 +35,21 @@ export function Context({ children }) {
 
   const signIn = async (email, password, username, number) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-
+  
       await setDoc(doc(db, "users", user.uid), {
         username,
         number,
       });
-
+  
       setUserDetails({ username, number });
-
       return user;
     } catch (error) {
-      throw new Error(error.message);
+      throw error; 
     }
   };
+  
 
   const logIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
