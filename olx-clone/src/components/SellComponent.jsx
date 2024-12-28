@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useProducts } from "../context/products";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/context";
+import { useNavigate } from "react-router-dom";
 
 
 function SellComponent() {
@@ -11,6 +12,7 @@ function SellComponent() {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const { user } = useAuth();
+  const navigate = useNavigate()
 
   const { addProduct } = useProducts();
 
@@ -22,6 +24,12 @@ function SellComponent() {
       setImagePreview(previewUrl);
     }
   };
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
